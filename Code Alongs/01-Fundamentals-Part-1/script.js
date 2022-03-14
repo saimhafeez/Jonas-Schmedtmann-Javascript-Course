@@ -19,3 +19,7 @@ const firstName = 'saim';
 const lastName = 'hafeez';
 
 console.log(firstName + ' ' + lastName);
+
+let info = `Hi, My Name is ${firstName} ${lastName}. and I am ${ageJonas} Years old`;
+
+console.log(info);
