@@ -109,6 +109,10 @@ h1 {
   background-color: #ccc;
 }
 
+.btn:disabled {
+  background-color: rgba(204, 204, 204, 0.213);
+}
+
 .message {
   margin-bottom: 8rem;
   height: 3rem;
