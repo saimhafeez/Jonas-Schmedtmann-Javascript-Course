@@ -14,9 +14,9 @@ let secret_number = getrandom();
 
 const number = document.querySelector('.number');
 
-let score = document.querySelector('.score');
+const highscore = document.querySelector('.highscore');
 
-number.textContent = secret_number;
+let score = document.querySelector('.score');
 
 console.log(msg, score);
 
@@ -34,6 +34,11 @@ check_btn.addEventListener('click', function () {
       document.querySelector('.number').style.width = '30rem';
 
       check_btn.disabled = true;
+      number.textContent = secret_number;
+
+      if (Number(score.textContent) > Number(highscore.textContent)) {
+        highscore.textContent = score.textContent;
+      }
     } else if (Number(guess_input.value) > secret_number) {
       msg.textContent = 'Too High';
       score.textContent = Number(score.textContent) - 1;
@@ -50,22 +55,9 @@ check_btn.addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   score.textContent = 20;
   secret_number = getrandom();
-  number.textContent = secret_number;
+  number.textContent = '?';
 
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
   check_btn.disabled = false;
 });
-
-/*
-Coding Challenge #1
-Implement a game rest functionality, so that the player can make a new guess!
-Your tasks:
-1. Select the element with the 'again' class and attach a click event handler
-2. In the handler function, restore initial values of the 'score' and
-'secretNumber' variables
-3. Restore the initial conditions of the message, number, score and guess input
-fields
-4. Also restore the original background color (#222) and number width (15rem)
-GOOD LUCK 😀
-*/
