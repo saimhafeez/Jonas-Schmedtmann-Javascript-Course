@@ -25,7 +25,25 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
+  orderDelivery: function ({
+    std_name = 's',
+    father_name = 'm',
+    course = 'IT',
+    degree_ending = 0,
+  }) {
+    console.log(
+      `Student named ${std_name} whose father's name is ${father_name}, is studying in ${course} and his degree will be completed in ${degree_ending} years`
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  std_name: 'Saim Hafeez',
+  degree_ending: 4,
+  course: 'BS(SE)',
+  father_name: 'Muhammad hafeez',
+});
 
 console.warn('Lecture 003');
 
@@ -79,3 +97,18 @@ const obj = { a: 12, b: 14, c: 16 };
 // This is correct way
 ({ a, b } = obj);
 console.log(a, b);
+
+// nested Objects
+
+const { openingHours: openHours } = restaurant;
+
+const { fri: firday } = openingHours;
+
+const { open: openingHour, close: closingHour } = firday;
+
+console.log(`openingHour: ${openingHour}`, `closingHour: ${closingHour}`);
+
+// -- SECOND WAY
+const {
+  fri: { open: openH, close: closeH },
+} = openHours;
