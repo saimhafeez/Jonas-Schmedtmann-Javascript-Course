@@ -112,3 +112,51 @@ console.log(`openingHour: ${openingHour}`, `closingHour: ${closingHour}`);
 const {
   fri: { open: openH, close: closeH },
 } = openHours;
+
+console.warn('005 The Spread Operator');
+
+// Spread Operator
+const arr_1 = [7, 8, 9];
+const arr_2 = [1, 2, ...arr_1];
+console.log(arr_2);
+
+console.warn('006 Rest Pattern and Parameters');
+
+// Rest Operator
+const [aa, bb, ...others] = [1, 3, 4, 5, 52, 23, 32, 12];
+console.log(aa, bb, others);
+
+// functions
+
+// ...numbers is packing all variables to an array
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(`sum: ${sum}`);
+};
+
+add(2, 4, 5, 6);
+const d = [1, 3, 4, 5, 6];
+// unpacking and then sending to function.
+add(...d);
+/*
+  add(2, 4)
+  add(2, 5, 6, 2)
+  add(2, 5, 1, 4, 5, 5, 4, 6)
+*/
+
+console.warn('007 Short Citcuiting');
+
+// Logical operators
+// Use Any Data Type, Return Any Data Type and short-circuiting
+console.log(undefined || null);
+console.log(3 || true);
+
+console.warn('008 Nullish');
+
+// Nullish: null and undefined (NOT 0 or '')
+restaurant.numGuests = 0;
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
