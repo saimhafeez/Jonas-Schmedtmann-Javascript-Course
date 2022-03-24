@@ -160,3 +160,33 @@ console.warn('008 Nullish');
 restaurant.numGuests = 0;
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
+
+console.warn('009 Logical Assignment Operator');
+
+const rest1 = {
+  name: 'capri',
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+// not efficient because if numGuests: 0 then OR Opertor will think of it as flase value.
+
+//rest1.numGuests ||= 10;
+//rest2.numGuests ||= 10;
+//console.log(rest1.numGuests, rest2.numGuests);
+
+// better way is to use nullify
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log(rest1.numGuests, rest2.numGuests);
+
+// AND Assignment Operator
+
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
