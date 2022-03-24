@@ -1,28 +1,40 @@
 'use-strict';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHoursOfRes = {
+  thu: {
+    open: 12,
+    close: 11,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // open 24 hours
+    close: 24,
+  },
+  [weekdays[1]]: {
+    open: 1,
+    close: 12,
+  },
+  [`day-${1 + 1}`]: {
+    open: 9,
+    close: 20,
+  },
+};
+
 const restaurant = {
   name: 'Pizza Hut',
   location: 'LDA-1, lahore, Punjab, Pakistan',
   categories: ['Italian', 'Pizzeria', 'Vegerarian', 'ORganic'],
+  openingHoursOfRes,
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic', 'Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 11,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // open 24 hours
-      close: 24,
-    },
-  },
 
   // Getting 2 returns from a function
-  order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -37,6 +49,8 @@ const restaurant = {
     );
   },
 };
+
+console.log(restaurant);
 
 restaurant.orderDelivery({
   std_name: 'Saim Hafeez',
@@ -100,9 +114,9 @@ console.log(a, b);
 
 // nested Objects
 
-const { openingHours: openHours } = restaurant;
+const { openingHoursOfRes: openHours } = restaurant;
 
-const { fri: firday } = openingHours;
+const { fri: firday } = openingHoursOfRes;
 
 const { open: openingHour, close: closingHour } = firday;
 
@@ -190,3 +204,59 @@ console.log(rest1.numGuests, rest2.numGuests);
 
 rest1.owner &&= '<ANONYMOUS>';
 rest2.owner &&= '<ANONYMOUS>';
+
+console.warn('011 Looping Arrays - For of Loop');
+
+const { starterMenu } = restaurant;
+// For Loop Basic
+for (const item of starterMenu) console.log(item);
+// For Loop with index
+for (const item of starterMenu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+
+console.log(...starterMenu.entries());
+
+// -- better way
+for (const [index, item] of starterMenu.entries()) {
+  console.log(`${index + 1}: ${item}`);
+}
+
+console.warn('013 Optional Chaining');
+
+// optional chaining
+console.log(restaurant.openingHoursOfRes?.mon?.open);
+
+// example
+const users = [
+  {
+    name: 'saim',
+    email: 'saim@gmail.com',
+  },
+];
+console.log(users[0]?.name ?? 'User array empty');
+
+console.warn('014 Looping Objects');
+
+// loop over array
+for (const day of Object.keys(openingHoursOfRes)) {
+  console.log(day);
+}
+
+console.warn('014 Looping Objects');
+
+const properties = Object.keys(openingHoursOfRes);
+
+console.log(properties);
+
+const values = Object.values(openingHoursOfRes);
+
+console.log(values);
+
+const entries = Object.entries(openingHoursOfRes);
+
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
