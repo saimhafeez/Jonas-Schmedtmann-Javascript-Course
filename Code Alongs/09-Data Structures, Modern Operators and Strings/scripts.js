@@ -282,3 +282,43 @@ rest
 console.log(rest.get('name'));
 console.log(rest.get('Categories'));
 console.log(rest.get(false));
+
+console.warn('018 Map Iteration');
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct Answer!'],
+  [false, 'Try again!'],
+]);
+
+console.log(question);
+
+// Convert Object to Map
+const hoursMap = new Map(Object.entries(openHours));
+console.log(hoursMap);
+
+// Iterations
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+const answer_user = 3;
+console.log(answer_user);
+
+if (answer_user === Number(question.get('correct'))) {
+  console.log(question.get(true));
+} else {
+  console.log(question.get(false));
+}
+
+// better way
+console.log(question.get(question.get('correct') === answer_user));
+
+// Convert map to Array
+console.log(...question);
