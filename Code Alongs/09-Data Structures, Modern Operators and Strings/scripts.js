@@ -260,3 +260,25 @@ console.log(entries);
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+
+console.warn('016 Sets');
+const orderSet = new Set(['pasta', 'pizza', 'risotto', 'pizza', 'pasta']);
+console.log(orderSet);
+
+console.warn('017 Maps');
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+
+rest
+  .set('Categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Orgaic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open :D')
+  .set(false, 'we are closed :(');
+
+console.log(rest.get('name'));
+console.log(rest.get('Categories'));
+console.log(rest.get(false));

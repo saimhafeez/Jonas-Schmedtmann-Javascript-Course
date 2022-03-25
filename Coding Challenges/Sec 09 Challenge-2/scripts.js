@@ -65,3 +65,20 @@ const game = {
     team2: 6.5,
   },
 };
+
+const { scored, odds } = game;
+for (const [index, item] of scored.entries()) {
+  console.log(`Goal ${index + 1}: ${item}`);
+}
+console.log(odds);
+let averageOdds = 0;
+for (const i of Object.values(odds)) {
+  averageOdds += Number(i);
+}
+averageOdds /= 3;
+console.log(`Average Odds: ${averageOdds}`);
+
+const { team1, x: draw, team2 } = odds;
+console.log(`team1: ${team1}`);
+console.log(`team2: ${team2}`);
+console.log(`draw: ${draw}`);
